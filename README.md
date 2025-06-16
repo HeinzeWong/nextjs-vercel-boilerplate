@@ -10,4 +10,3 @@ yarn && yarn dev
 
 打开网站 [http://localhost:3000](http://localhost:3000) 即可看到nextjs的页面
 
-d
