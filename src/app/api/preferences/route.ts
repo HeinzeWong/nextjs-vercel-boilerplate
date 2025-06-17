@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { REGIONS, LOCALES, COOKIE_KEYS, COOKIE_CONFIG } from '@/src/constants/cookies'
+import { REGIONS, LOCALES, COOKIE_KEYS, COOKIE_CONFIG } from '@/src/libs/Cookies'
 
 export async function POST(request: NextRequest) {
   try {
@@ -16,14 +16,14 @@ export async function POST(request: NextRequest) {
     // 创建响应并设置Cookie
     const response = NextResponse.json({ success: true })
     
-    response.cookies.set(COOKIE_KEYS.USER_SELECTED_REGION, region, {
+    response.cookies.set(COOKIE_KEYS.USER_REGION, region, {
       maxAge: COOKIE_CONFIG.MAX_AGE,
       httpOnly: false,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax'
     })
     
-    response.cookies.set(COOKIE_KEYS.USER_SELECTED_LOCALE, locale, {
+    response.cookies.set(COOKIE_KEYS.USER_LOCALE, locale, {
       maxAge: COOKIE_CONFIG.MAX_AGE,
       httpOnly: false,
       secure: process.env.NODE_ENV === 'production',

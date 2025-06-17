@@ -2,11 +2,12 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import Image from 'next/image'
 import Link from 'next/link'
 import RegionSelector from '@/src/components/RegionSelector'
+import type { Locale, Region } from '@/src/libs'
 
 interface PageProps {
   params: Promise<{
-    region: string
-    locale: string
+    region: Region
+    locale: Locale
   }>
 }
 

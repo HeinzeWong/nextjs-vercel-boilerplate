@@ -2,19 +2,12 @@
 
 import { useState } from "react";
 import Cookies from "js-cookie";
-import {
-  REGIONS,
-  LOCALES,
-  REGION_LOCALE_MAP,
-  COOKIE_KEYS,
-  COOKIE_CONFIG,
-  type Region,
-  type Locale,
-} from "@/src/constants/cookies";
+import { COOKIE_CONFIG, COOKIE_KEYS, LOCALE_CONFIG, REGIONS, type Locale, type Region } from "../libs";
+
 
 interface RegionSelectorProps {
-  currentRegion: string;
-  currentLocale: string;
+  currentRegion: Region;
+  currentLocale: Locale;
 }
 
 const regionDisplayInfo = [
@@ -35,22 +28,16 @@ export default function RegionSelector({
 }: RegionSelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleRegionChange = async (regionCode: string) => {
-    // const defaultLocale = REGION_LOCALE_MAP[regionCode as Region]?.[0] || "en";
-
-    // 检测pathname是否包含region，如果包含，需要清掉region，不然地区设置不生效
-    
-    // 直接setCookie就好了，不走api
-    Cookies.set(COOKIE_KEYS.USER_SELECTED_REGION, regionCode, {
+  const handleRegionChange = async (regionCode: Region) => {
+    Cookies.set(COOKIE_KEYS.USER_REGION, regionCode, {
       expires: COOKIE_CONFIG.EXPIRES_DAYS,
     });
-    // Cookies.set(COOKIE_KEYS.USER_SELECTED_LOCALE, defaultLocale, {
-    //   expires: COOKIE_CONFIG.EXPIRES_DAYS,
-    // });
 
+    // 检测pathname是否包含region，如果包含，需要清掉region，不然地区设置不生效
     const pathname = window.location.pathname
     const pathSegments = pathname.split('/').filter(Boolean)
     const isRegionPath = REGIONS.includes(pathSegments[0] as Region)
+    
     if (isRegionPath) {
       pathSegments.shift()
       console.log(pathSegments.join('/'))
@@ -59,65 +46,21 @@ export default function RegionSelector({
       window.location.reload();
     }
 
-    // try {
-    //   const response = await fetch('/api/preferences', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //       region: regionCode,
-    //       locale: defaultLocale
-    //     }),
-    //   })
-
-    //   if (response.ok) {
-    //     window.location.reload()
-    //   }
-    // } catch (error) {
-    //   console.error('Failed to update preferences:', error)
-    //   // 回退到原来的方法
-    //   Cookies.set(COOKIE_KEYS.USER_SELECTED_REGION, regionCode, { expires: COOKIE_CONFIG.EXPIRES_DAYS })
-    //   Cookies.set(COOKIE_KEYS.USER_SELECTED_LOCALE, defaultLocale, { expires: COOKIE_CONFIG.EXPIRES_DAYS })
-    //   window.location.reload()
-    // }
   };
 
   const handleLocaleChange = async (localeCode: string) => {
     // 检查当前地区是否支持选择的语言
-    const supportedLocales = REGION_LOCALE_MAP[currentRegion as Region] || [];
+    const supportedLocales = LOCALE_CONFIG[currentRegion as Region].supportedLocales || [];
     if (!supportedLocales.includes(localeCode as Locale)) {
       return;
     }
 
-    Cookies.set(COOKIE_KEYS.USER_SELECTED_LOCALE, localeCode, {
+    Cookies.set(COOKIE_KEYS.USER_LOCALE, localeCode, {
       expires: COOKIE_CONFIG.EXPIRES_DAYS,
     });
     window.location.reload();
 
-    // try {
-    //   const response = await fetch("/api/preferences", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       region: currentRegion,
-    //       locale: localeCode,
-    //     }),
-    //   });
-
-    //   if (response.ok) {
-    //     window.location.reload();
-    //   }
-    // } catch (error) {
-    //   console.error("Failed to update preferences:", error);
-    //   // 回退到原来的方法
-    //   Cookies.set(COOKIE_KEYS.USER_SELECTED_LOCALE, localeCode, {
-    //     expires: COOKIE_CONFIG.EXPIRES_DAYS,
-    //   });
-    //   window.location.reload();
-    // }
+   
   };
 
   const currentRegionInfo = regionDisplayInfo.find(
@@ -127,7 +70,7 @@ export default function RegionSelector({
     (l) => l.code === currentLocale
   );
   const availableLocales = localeDisplayInfo.filter((l) =>
-    REGION_LOCALE_MAP[currentRegion as Region]?.includes(l.code)
+    LOCALE_CONFIG[currentRegion as Region]?.supportedLocales.includes(l.code)
   );
 
   return (
