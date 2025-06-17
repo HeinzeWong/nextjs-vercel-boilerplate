@@ -45,7 +45,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <p className="text-gray-600 mb-4">
             {t("description", { region, locale, id: productId })}
           </p>
-          <DynamicProductInfo />
+          <DynamicProductInfo productId={productId} />
 
           <div className="space-y-2 mt-4">
             <p>

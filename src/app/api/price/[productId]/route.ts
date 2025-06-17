@@ -18,10 +18,10 @@ const getPriceData = async (productId: string) => {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { productId: string } }
+  { params }: { params: Promise<{ productId: string }> }
 ) {
   try {
-    const { productId } = params
+    const { productId } = await params
     
     // 获取实时价格数据
     const priceData = await getPriceData(productId)
