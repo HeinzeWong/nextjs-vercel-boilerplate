@@ -92,7 +92,7 @@ export async function middleware(request: NextRequest) {
 
   // 5.如果有locale或者region，则设置cookie
   response.cookies.set(COOKIE_KEYS.USER_REGION, region, {
-    expires: Date.now() + COOKIE_CONFIG.EXPIRES_SECONDS,
+    maxAge: COOKIE_CONFIG.EXPIRES_SECONDS,
   })
 
   // if (userLocale) {
