@@ -14,6 +14,9 @@ interface PageProps {
 export default async function HomePage({ params }: PageProps) {
   const { region, locale } = await params
 
+  // 设置当前这次请求的多语言
+  setRequestLocale(locale);
+
   const t = await getTranslations('HomePage')
 
   return (

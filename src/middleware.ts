@@ -58,7 +58,6 @@ export async function middleware(request: NextRequest) {
   //   // 路径已经正确，直接继续
   //   return NextResponse.next()
   // }
-  console.log('pathname', pathname)
   // 如果pathname第一项是region，则取出
   const pathSegments = pathname.split('/').filter(Boolean)
   const pathRegion = REGIONS.includes(pathSegments[0] as Region) ? pathSegments[0] as Region : null
