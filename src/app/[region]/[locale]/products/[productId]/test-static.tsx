@@ -1,23 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import Image from "next/image";
-import dynamic from "next/dynamic";
-
-// 使用动态导入，但不设置ssr:false（在服务端组件中）
-const ClientPriceWrapper = dynamic(
-  () => import("@/src/components/product/ClientPriceWrapper").then(mod => ({ default: mod.ClientPriceWrapper })),
-  {
-    loading: () => (
-      <div className="space-y-2 animate-pulse">
-        <div className="flex items-center space-x-3">
-          <div className="h-8 bg-gray-200 rounded-md w-32"></div>
-          <div className="h-6 bg-gray-200 rounded-md w-20"></div>
-        </div>
-        <div className="h-4 bg-gray-200 rounded-md w-40"></div>
-      </div>
-    ),
-  }
-);
 
 interface PageProps {
   params: Promise<{
@@ -30,14 +13,11 @@ interface PageProps {
 // SSG缓存时间
 export const revalidate = 30;
 
-
 // 预生成静态路径
 export async function generateStaticParams() {
-  // 这里定义要预生成的路径参数
-  // 你可以从数据库或API获取所有可能的参数组合
   const regions = ['cn', 'jp', 'us'];
   const locales = ['zh', 'ja', 'en'];
-  const productIds = ['1', '5']; // 示例产品ID，实际应该从数据源获取
+  const productIds = ['1', '2', '3', '4', '5'];
 
   const params = [];
   for (const region of regions) {
@@ -55,10 +35,13 @@ export async function generateStaticParams() {
   return params;
 }
 
-export default async function ProductDetailPage({ params }: PageProps) {
+export default async function TestStaticPage({ params }: PageProps) {
   const { region, locale, productId } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("ProductDetail");
+
+  // 静态生成的时间戳，用于验证ISR
+  const staticTimestamp = new Date().toISOString();
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -70,28 +53,28 @@ export default async function ProductDetailPage({ params }: PageProps) {
       </Link>
 
       <h1 className="text-3xl font-bold mb-6">
-        {t("title", { id: productId })}
+        {t("title", { id: productId })} - 静态测试版
       </h1>
       
-      {/* ISR缓存指示器 - 这个时间会每30秒更新一次 */}
+      {/* ISR缓存指示器 */}
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-6">
         <div className="flex items-center space-x-2">
           <span className="text-blue-600 font-medium">🏗️ ISR缓存状态:</span>
+          <span className="text-blue-800">页面生成时间: {staticTimestamp}</span>
         </div>
         <p className="text-blue-600 text-sm mt-1">
-          这个时间每30秒更新一次，而下方价格是实时获取的
-          <span className="text-blue-800">页面生成时间: {new Date().toLocaleString()}</span>
+          这个时间每30秒更新一次（完全静态版本）
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bg-gray-100 aspect-square rounded-lg flex items-center justify-center ">
+        <div className="bg-gray-100 aspect-square rounded-lg flex items-center justify-center">
           <Image
             src="https://static.mercdn.net/item/detail/orig/photos/m44137797237_1.jpg?1750099402"
             alt="Product Image"
             width={300}
             height={300}
-            className=" h-full object-cover"
+            className="h-full object-cover"
           />
         </div>
 
@@ -100,7 +83,16 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <p className="text-gray-600 mb-4">
             {t("description", { region, locale, id: productId })}
           </p>
-          <ClientPriceWrapper productId={productId} />
+          
+          {/* 静态价格信息 */}
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <div className="text-lg font-medium text-gray-600">
+              静态价格信息（用于测试ISR）
+            </div>
+            <div className="text-sm text-gray-500 mt-1">
+              这是静态生成的内容，会随ISR一起更新
+            </div>
+          </div>
 
           <div className="space-y-2 mt-4">
             <p>
@@ -117,4 +109,4 @@ export default async function ProductDetailPage({ params }: PageProps) {
       </div>
     </div>
   );
-}
+} 

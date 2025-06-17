@@ -43,3 +43,5 @@ export const LOCALE_CONFIG = createLocaleConfig()
 
 // 默认地区
 export const DEFAULT_REGION = REGION_VALUES.CN
+
+export const DEFAULT_LOCALE = LOCALE_VALUES.ZH
