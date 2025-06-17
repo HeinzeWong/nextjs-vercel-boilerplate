@@ -1,0 +1,52 @@
+{
+  "HomePage": {
+    "title": "Welcome to Multi-Region Multi-Language Website",
+    "description": "Current region: {region}, locale: {locale}",
+    "step1": "Get started by editing app/[region]/[locale]/page.tsx",
+    "step2": "Save and see your changes instantly",
+    "deploy": "Deploy now",
+    "readDocs": "Read our docs",
+    "learn": "Learn",
+    "examples": "Examples",
+    "nextjs": "Go to nextjs.org",
+    "viewProducts": "View Products",
+    "aboutUs": "About Us"
+  },
+  "Products": {
+    "title": "Products",
+    "description": "Product showcase for region: {region}, locale: {locale}",
+    "product1": {
+      "name": "Product A",
+      "description": "An excellent Product A designed for the global market"
+    },
+    "product2": {
+      "name": "Product B",
+      "description": "An innovative Product B that meets user needs"
+    }
+  },
+  "ProductDetail": {
+    "title": "Product {id} Details",
+    "backToProducts": "Back to Products",
+    "details": "Product Details",
+    "description": "Detailed information for product {id} in region {region} with locale {locale}",
+    "region": "Region",
+    "language": "Language",
+    "productId": "Product ID",
+    "imagePlaceholder": "Product Image"
+  },
+  "About": {
+    "title": "About Us",
+    "backToHome": "Back to Home",
+    "introduction": "This is a multi-region multi-language website example built with Next.js 15, demonstrating how to implement internationalization and localization features.",
+    "features": {
+      "title": "Key Features",
+      "multiRegion": "Support for multiple regions (China, Japan, United States)",
+      "multiLanguage": "Support for multiple languages (Chinese, Japanese, English)",
+      "userPreferences": "Remember user's region and language preferences",
+      "responsive": "Responsive design, compatible with various devices"
+    },
+    "currentSettings": "Current Settings",
+    "region": "Region",
+    "language": "Language"
+  }
+} 

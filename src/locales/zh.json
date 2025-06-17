@@ -1,0 +1,52 @@
+{
+  "HomePage": {
+    "title": "欢迎来到多地区多语言网站",
+    "description": "当前地区: {region}, 语言: {locale}",
+    "step1": "开始编辑 app/[region]/[locale]/page.tsx 文件",
+    "step2": "保存后立即查看您的更改",
+    "deploy": "立即部署",
+    "readDocs": "阅读文档",
+    "learn": "学习",
+    "examples": "示例",
+    "nextjs": "访问 nextjs.org",
+    "viewProducts": "查看产品",
+    "aboutUs": "关于我们"
+  },
+  "Products": {
+    "title": "产品列表",
+    "description": "当前地区: {region}, 语言: {locale} 的产品展示",
+    "product1": {
+      "name": "产品A",
+      "description": "这是一个优秀的产品A，专为中国市场设计"
+    },
+    "product2": {
+      "name": "产品B", 
+      "description": "这是一个创新的产品B，满足用户需求"
+    }
+  },
+  "ProductDetail": {
+    "title": "产品 {id} 详情",
+    "backToProducts": "返回产品列表",
+    "details": "产品详情",
+    "description": "这是地区 {region} 语言 {locale} 的产品 {id} 详细信息",
+    "region": "地区",
+    "language": "语言",
+    "productId": "产品ID",
+    "imagePlaceholder": "产品图片"
+  },
+  "About": {
+    "title": "关于我们",
+    "backToHome": "返回首页",
+    "introduction": "这是一个基于Next.js 15构建的多地区多语言网站示例，展示了如何实现国际化和本地化功能。",
+    "features": {
+      "title": "主要特性",
+      "multiRegion": "支持多个地区（中国、日本、美国）",
+      "multiLanguage": "支持多种语言（中文、日语、英语）",
+      "userPreferences": "记住用户的地区和语言偏好",
+      "responsive": "响应式设计，适配各种设备"
+    },
+    "currentSettings": "当前设置",
+    "region": "地区",
+    "language": "语言"
+  }
+} 

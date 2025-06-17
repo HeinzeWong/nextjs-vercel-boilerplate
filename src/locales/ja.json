@@ -1,0 +1,52 @@
+{
+  "HomePage": {
+    "title": "多地域多言語ウェブサイトへようこそ",
+    "description": "現在の地域: {region}, 言語: {locale}",
+    "step1": "app/[region]/[locale]/page.tsx ファイルを編集してください",
+    "step2": "保存すると変更がすぐに反映されます",
+    "deploy": "今すぐデプロイ",
+    "readDocs": "ドキュメントを読む",
+    "learn": "学習",
+    "examples": "例",
+    "nextjs": "nextjs.org へ",
+    "viewProducts": "製品を見る",
+    "aboutUs": "私たちについて"
+  },
+  "Products": {
+    "title": "製品一覧",
+    "description": "現在の地域: {region}, 言語: {locale} の製品展示",
+    "product1": {
+      "name": "製品A",
+      "description": "日本市場向けに設計された優秀な製品Aです"
+    },
+    "product2": {
+      "name": "製品B",
+      "description": "ユーザーのニーズを満たす革新的な製品Bです"
+    }
+  },
+  "ProductDetail": {
+    "title": "製品 {id} の詳細",
+    "backToProducts": "製品一覧に戻る",
+    "details": "製品詳細",
+    "description": "地域 {region} 言語 {locale} の製品 {id} の詳細情報です",
+    "region": "地域",
+    "language": "言語",
+    "productId": "製品ID",
+    "imagePlaceholder": "製品画像"
+  },
+  "About": {
+    "title": "私たちについて",
+    "backToHome": "ホームに戻る",
+    "introduction": "これはNext.js 15で構築された多地域多言語ウェブサイトの例で、国際化とローカリゼーション機能を実装する方法を示しています。",
+    "features": {
+      "title": "主な機能",
+      "multiRegion": "複数の地域をサポート（中国、日本、アメリカ）",
+      "multiLanguage": "複数の言語をサポート（中国語、日本語、英語）",
+      "userPreferences": "ユーザーの地域と言語の設定を記憶",
+      "responsive": "レスポンシブデザイン、様々なデバイスに対応"
+    },
+    "currentSettings": "現在の設定",
+    "region": "地域",
+    "language": "言語"
+  }
+} 
