@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import Image from "next/image";
+import { DynamicProductInfo } from "@/src/components/product/productInfo";
 
 interface PageProps {
   params: Promise<{
@@ -29,12 +30,13 @@ export default async function ProductDetailPage({ params }: PageProps) {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bg-gray-100 aspect-square rounded-lg flex items-center justify-center">
+        <div className="bg-gray-100 aspect-square rounded-lg flex items-center justify-center ">
           <Image
             src="https://static.mercdn.net/item/detail/orig/photos/m44137797237_1.jpg?1750099402"
             alt="Product Image"
             width={300}
             height={300}
+            className=" h-full object-cover"
           />
         </div>
 
@@ -43,8 +45,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <p className="text-gray-600 mb-4">
             {t("description", { region, locale, id: productId })}
           </p>
+          <DynamicProductInfo />
 
-          <div className="space-y-2">
+          <div className="space-y-2 mt-4">
             <p>
               <strong>{t("region")}:</strong> {region}
             </p>

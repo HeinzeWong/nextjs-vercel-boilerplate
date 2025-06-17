@@ -32,7 +32,11 @@
     "region": "地域",
     "language": "言語",
     "productId": "製品ID",
-    "imagePlaceholder": "製品画像"
+    "imagePlaceholder": "製品画像",
+    "priceLabel": "価格：",
+    "lastUpdated": "更新時間：",
+    "priceError": "価格の取得に失敗しました",
+    "loadingPrice": "価格を読み込み中..."
   },
   "About": {
     "title": "私たちについて",

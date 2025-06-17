@@ -32,7 +32,11 @@
     "region": "Region",
     "language": "Language",
     "productId": "Product ID",
-    "imagePlaceholder": "Product Image"
+    "imagePlaceholder": "Product Image",
+    "priceLabel": "Price: ",
+    "lastUpdated": "Last Updated: ",
+    "priceError": "Failed to load price",
+    "loadingPrice": "Loading price..."
   },
   "About": {
     "title": "About Us",

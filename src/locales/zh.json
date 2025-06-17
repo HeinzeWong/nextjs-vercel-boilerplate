@@ -32,7 +32,11 @@
     "region": "地区",
     "language": "语言",
     "productId": "产品ID",
-    "imagePlaceholder": "产品图片"
+    "imagePlaceholder": "产品图片",
+    "priceLabel": "价格：",
+    "lastUpdated": "更新时间：",
+    "priceError": "价格获取失败",
+    "loadingPrice": "加载价格中..."
   },
   "About": {
     "title": "关于我们",
