@@ -19,7 +19,7 @@ export type Locale = typeof LOCALES[number]
 
 // 地区-语言映射关系
 export const REGION_LOCALE_MAP: Record<Region, Locale[]> = {
-  cn: ['zh', 'en'],
+  cn: ['zh', 'en', 'ja'],
   jp: ['ja', 'en', 'zh'],
   us: ['en', 'zh', 'ja']
 }

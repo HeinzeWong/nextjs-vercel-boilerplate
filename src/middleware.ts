@@ -38,27 +38,36 @@ function validateAndAdjust(region: string, locale: string): { region: Region; lo
 }
 
 export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
+  let { pathname } = request.nextUrl
 
-  // 跳过静态文件和API路由
-  if (
-    pathname.startsWith('/_next/') ||
-    pathname.startsWith('/api/') ||
-    pathname.includes('.') ||
-    pathname.startsWith('/favicon')
-  ) {
-    return NextResponse.next()
-  }
+  // // 跳过静态文件和API路由
+  // if (
+  //   pathname.startsWith('/_next/') ||
+  //   pathname.startsWith('/api/') ||
+  //   pathname.includes('.') ||
+  //   pathname.startsWith('/favicon')
+  // ) {
+  //   return NextResponse.next()
+  // }
 
   // 检查当前路径是否已经包含地区和语言
-  const pathSegments = pathname.split('/').filter(Boolean)
-  const isRegionLocalePath = pathSegments.length >= 2 && 
-    REGIONS.includes(pathSegments[0] as Region) && 
-    LOCALES.includes(pathSegments[1] as Locale)
+  // const pathSegments = pathname.split('/').filter(Boolean)
+  // const isRegionLocalePath = pathSegments.length >= 2 && 
+  //   REGIONS.includes(pathSegments[0] as Region) && 
+  //   LOCALES.includes(pathSegments[1] as Locale)
 
-  if (isRegionLocalePath) {
-    // 路径已经正确，直接继续
-    return NextResponse.next()
+  // if (isRegionLocalePath) {
+  //   // 路径已经正确，直接继续
+  //   return NextResponse.next()
+  // }
+
+  // 如果pathname第一项是region，则取出
+  const pathSegments = pathname.split('/').filter(Boolean)
+  const pathRegion = REGIONS.includes(pathSegments[0] as Region) ? pathSegments[0] as Region : null
+
+  // 如果是region，则取出region，并改写pathname，然后继续走后面的逻辑
+  if (pathRegion) {
+    pathname = pathSegments.slice(1).join('/')
   }
 
   // 1. 检查用户偏好（Cookie）
@@ -68,10 +77,12 @@ export async function middleware(request: NextRequest) {
   // 2. 自动检测地区
   const detectedRegion = detectRegionFromIP(request)
 
+  const computedRegion = pathRegion || userRegion || detectedRegion
+
   // 3. 验证并调整
   const { region, locale } = validateAndAdjust(
-    userRegion || detectedRegion,
-    userLocale || DEFAULT_LOCALE_MAP[detectedRegion]
+    computedRegion,
+    userLocale || DEFAULT_LOCALE_MAP[computedRegion as Region]
   )
 
   // 4. 重写路由到地区/语言路径
@@ -91,7 +102,8 @@ export const config = {
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
+     * - locales目录下的多语言文件（多语言文件不走middleware）
      */
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|locales).*)',
   ],
 } 

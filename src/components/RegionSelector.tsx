@@ -36,16 +36,28 @@ export default function RegionSelector({
   const [isOpen, setIsOpen] = useState(false);
 
   const handleRegionChange = async (regionCode: string) => {
-    const defaultLocale = REGION_LOCALE_MAP[regionCode as Region]?.[0] || "en";
+    // const defaultLocale = REGION_LOCALE_MAP[regionCode as Region]?.[0] || "en";
 
+    // 检测pathname是否包含region，如果包含，需要清掉region，不然地区设置不生效
+    
     // 直接setCookie就好了，不走api
     Cookies.set(COOKIE_KEYS.USER_SELECTED_REGION, regionCode, {
       expires: COOKIE_CONFIG.EXPIRES_DAYS,
     });
-    Cookies.set(COOKIE_KEYS.USER_SELECTED_LOCALE, defaultLocale, {
-      expires: COOKIE_CONFIG.EXPIRES_DAYS,
-    });
-    window.location.reload();
+    // Cookies.set(COOKIE_KEYS.USER_SELECTED_LOCALE, defaultLocale, {
+    //   expires: COOKIE_CONFIG.EXPIRES_DAYS,
+    // });
+
+    const pathname = window.location.pathname
+    const pathSegments = pathname.split('/').filter(Boolean)
+    const isRegionPath = REGIONS.includes(pathSegments[0] as Region)
+    if (isRegionPath) {
+      pathSegments.shift()
+      console.log(pathSegments.join('/'))
+      window.location.replace(`/${pathSegments.join('/')}`)
+    } else {
+      window.location.reload();
+    }
 
     // try {
     //   const response = await fetch('/api/preferences', {
@@ -78,29 +90,34 @@ export default function RegionSelector({
       return;
     }
 
-    try {
-      const response = await fetch("/api/preferences", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          region: currentRegion,
-          locale: localeCode,
-        }),
-      });
+    Cookies.set(COOKIE_KEYS.USER_SELECTED_LOCALE, localeCode, {
+      expires: COOKIE_CONFIG.EXPIRES_DAYS,
+    });
+    window.location.reload();
 
-      if (response.ok) {
-        window.location.reload();
-      }
-    } catch (error) {
-      console.error("Failed to update preferences:", error);
-      // 回退到原来的方法
-      Cookies.set(COOKIE_KEYS.USER_SELECTED_LOCALE, localeCode, {
-        expires: COOKIE_CONFIG.EXPIRES_DAYS,
-      });
-      window.location.reload();
-    }
+    // try {
+    //   const response = await fetch("/api/preferences", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       region: currentRegion,
+    //       locale: localeCode,
+    //     }),
+    //   });
+
+    //   if (response.ok) {
+    //     window.location.reload();
+    //   }
+    // } catch (error) {
+    //   console.error("Failed to update preferences:", error);
+    //   // 回退到原来的方法
+    //   Cookies.set(COOKIE_KEYS.USER_SELECTED_LOCALE, localeCode, {
+    //     expires: COOKIE_CONFIG.EXPIRES_DAYS,
+    //   });
+    //   window.location.reload();
+    // }
   };
 
   const currentRegionInfo = regionDisplayInfo.find(
