@@ -43,9 +43,9 @@ export const DynamicProductInfo = ({ productId }: { productId?: string }) => {
     fetchPrice()
 
     // 可选：设置定时刷新价格
-    const interval = setInterval(fetchPrice, 30000) // 30秒刷新一次
+    // const interval = setInterval(fetchPrice, 30000) // 30秒刷新一次
     
-    return () => clearInterval(interval)
+    // return () => clearInterval(interval)
   }, [productId])
 
   if (loading) {
