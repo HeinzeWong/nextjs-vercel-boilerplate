@@ -1,0 +1,151 @@
+@use "@/src/styles/mixins.scss" as *;
+
+
+.loading {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  
+  & > * + * {
+    margin-top: var(--spacing-3);
+  }
+}
+
+.loadingHeader {
+  @include flex-center;
+  justify-content: flex-start;
+  gap: var(--spacing-4);
+}
+
+.loadingTitle {
+  height: 2.5rem;
+  background: linear-gradient(90deg, var(--color-gray-200) 25%, var(--color-gray-100) 50%, var(--color-gray-200) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--border-radius-lg);
+  width: 12rem;
+}
+
+.loadingStatus {
+  height: 2rem;
+  background: linear-gradient(90deg, var(--color-green-200) 25%, var(--color-green-100) 50%, var(--color-green-200) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite 0.2s;
+  border-radius: var(--border-radius-md);
+  width: 4rem;
+}
+
+.loadingSubtitle {
+  height: 1.5rem;
+  background: linear-gradient(90deg, var(--color-gray-200) 25%, var(--color-gray-100) 50%, var(--color-gray-200) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite 0.4s;
+  border-radius: var(--border-radius-md);
+  width: 15rem;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.error {
+  color: var(--color-red-600);
+  background: var(--color-red-50);
+  border: 2px solid var(--color-red-200);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-4);
+  font-weight: 500;
+  text-align: center;
+}
+
+.content {
+  & > * + * {
+    margin-top: var(--spacing-4);
+  }
+}
+
+.priceCard {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 2px solid var(--color-green-200);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-8);
+  position: relative;
+  overflow: hidden;
+  @include shadow(3);
+  @include transition(all, 0.4s);
+  
+  &:hover {
+    transform: translateY(-4px);
+    @include shadow(4);
+    border-color: var(--color-green-300);
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 3s infinite;
+  }
+}
+
+.priceCardHeader {
+  @include flex-center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-4);
+}
+
+.priceCardTitle {
+  color: var(--color-green-700);
+  font-weight: 800;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.priceCardBadge {
+  background: var(--color-green-500);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: var(--spacing-1) var(--spacing-3);
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: pulse 2s infinite;
+  @include shadow(1);
+}
+
+.priceCardPrice {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--color-green-600);
+  margin-bottom: var(--spacing-3);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.priceCardSubtitle {
+  font-size: 0.95rem;
+  color: var(--color-green-600);
+  font-weight: 600;
+  margin-bottom: var(--spacing-3);
+}
+
+.priceCardTrend {
+  font-size: 0.875rem;
+  color: var(--color-green-700);
+  font-weight: 600;
+  background: rgba(34, 197, 94, 0.1);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--border-radius-lg);
+  text-align: center;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+} 

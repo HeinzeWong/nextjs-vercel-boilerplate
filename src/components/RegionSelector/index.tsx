@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Cookies from "js-cookie";
-import { COOKIE_CONFIG, COOKIE_KEYS, LOCALE_CONFIG, REGIONS, type Locale, type Region } from "../libs";
-
+import { COOKIE_CONFIG, COOKIE_KEYS, LOCALE_CONFIG, REGIONS, type Locale, type Region } from "../../libs";
+import styles from "./index.module.scss";
 
 interface RegionSelectorProps {
   currentRegion: Region;
@@ -74,14 +74,14 @@ export default function RegionSelector({
   );
 
   return (
-    <div className="relative">
+    <div className={styles.regionSelector}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+        className={styles.trigger}
       >
         <span>{currentRegionInfo?.flag}</span>
         <span>{currentRegionInfo?.name}</span>
-        <span className="text-gray-500">({currentLocaleInfo?.name})</span>
+        <span className={styles.localeName}>({currentLocaleInfo?.name})</span>
         <svg
           className={`w-4 h-4 transition-transform ${
             isOpen ? "rotate-180" : ""
@@ -100,20 +100,18 @@ export default function RegionSelector({
       </button>
 
       {isOpen && (
-        <div className="absolute top-full left-0 mt-1 w-64 bg-white border border-gray-300 rounded-lg shadow-lg z-50">
-          <div className="p-2">
-            <h3 className="text-sm font-semibold text-gray-700 mb-2">
+        <div className={styles.dropdown}>
+          <div className={styles.section}>
+            <h3 className={styles.sectionTitle}>
               选择地区
             </h3>
-            <div className="space-y-1">
+            <div className={styles.sectionOptions}>
               {regionDisplayInfo.map((region) => (
                 <button
                   key={region.code}
                   onClick={() => handleRegionChange(region.code)}
-                  className={`w-full flex items-center gap-2 px-3 py-2 text-left hover:bg-gray-100 rounded transition-colors ${
-                    currentRegion === region.code
-                      ? "bg-blue-50 text-blue-600"
-                      : ""
+                  className={`${styles.option} ${
+                    currentRegion === region.code ? styles.optionActive : ""
                   }`}
                 >
                   <span>{region.flag}</span>
@@ -123,19 +121,17 @@ export default function RegionSelector({
             </div>
           </div>
 
-          <div className="border-t p-2">
-            <h3 className="text-sm font-semibold text-gray-700 mb-2">
+          <div className={`${styles.section} ${styles.sectionBordered}`}>
+            <h3 className={styles.sectionTitle}>
               选择语言
             </h3>
-            <div className="space-y-1">
+            <div className={styles.sectionOptions}>
               {availableLocales.map((locale) => (
                 <button
                   key={locale.code}
                   onClick={() => handleLocaleChange(locale.code)}
-                  className={`w-full px-3 py-2 text-left hover:bg-gray-100 rounded transition-colors ${
-                    currentLocale === locale.code
-                      ? "bg-blue-50 text-blue-600"
-                      : ""
+                  className={`${styles.option} ${
+                    currentLocale === locale.code ? styles.optionActive : ""
                   }`}
                 >
                   {locale.name}
@@ -147,8 +143,8 @@ export default function RegionSelector({
       )}
 
       {isOpen && (
-        <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />
+        <div className={styles.overlay} onClick={() => setIsOpen(false)} />
       )}
     </div>
   );
-}
+} 

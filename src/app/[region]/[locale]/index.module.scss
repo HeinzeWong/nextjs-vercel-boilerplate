@@ -1,0 +1,133 @@
+.pageWrapper {
+  display: grid;
+  grid-template-rows: 20px 1fr 20px;
+  align-items: center;
+  justify-items: center;
+  min-height: 100vh;
+  padding: var(--spacing-8);
+  padding-bottom: 5rem;
+  gap: 4rem;
+  font-family: var(--font-geist-sans);
+
+  @media (min-width: 640px) {
+    padding: 5rem;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  grid-row-start: 2;
+  align-items: center;
+
+  @media (min-width: 640px) {
+    align-items: flex-start;
+  }
+}
+
+.title {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+
+  @media (min-width: 640px) {
+    text-align: left;
+  }
+}
+
+.description {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  text-align: center;
+
+  @media (min-width: 640px) {
+    text-align: left;
+  }
+}
+
+.stepsList {
+  list-style-position: inside;
+  list-style-type: decimal;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-align: center;
+  font-family: var(--font-geist-mono);
+
+  @media (min-width: 640px) {
+    text-align: left;
+  }
+
+  li {
+    margin-bottom: var(--spacing-2);
+    letter-spacing: -0.01em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.navigation {
+  display: flex;
+  gap: var(--spacing-4);
+  align-items: center;
+  flex-direction: column;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+  }
+}
+
+.primaryButton {
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  background-color: var(--color-blue-600);
+  color: white;
+  transition: background-color 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 0.875rem;
+  height: 2.5rem;
+  padding: 0 var(--spacing-4);
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--color-blue-800);
+  }
+
+  @media (min-width: 640px) {
+    font-size: 1rem;
+    height: 3rem;
+    padding: 0 1.25rem;
+  }
+}
+
+.secondaryButton {
+  border-radius: 9999px;
+  border: 1px solid var(--color-gray-300);
+  background-color: transparent;
+  color: inherit;
+  transition: background-color 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 0.875rem;
+  height: 2.5rem;
+  padding: 0 var(--spacing-4);
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--color-gray-50);
+  }
+
+  @media (min-width: 640px) {
+    font-size: 1rem;
+    height: 3rem;
+    padding: 0 1.25rem;
+  }
+} 

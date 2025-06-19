@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { setRequestLocale } from "next-intl/server";
 import Link from "next/link";
+import styles from "./index.module.scss";
 
 interface PageProps {
   params: Promise<{
@@ -15,28 +16,28 @@ export default async function AboutPage({ params }: PageProps) {
   const t = await getTranslations("About");
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <nav className="mb-6">
-        <Link href="/" className="text-blue-600 hover:underline">
+    <div className={styles.container}>
+      <nav className={styles.nav}>
+        <Link href="/" className={styles.navLink}>
           ← {t("backToHome")}
         </Link>
       </nav>
 
-      <h1 className="text-4xl font-bold mb-6">{t("title")}</h1>
+      <h1 className={styles.title}>{t("title")}</h1>
 
-      <div className="prose max-w-none">
-        <p className="text-lg mb-4">{t("introduction")}</p>
+      <div className={styles.prose}>
+        <p>{t("introduction")}</p>
 
-        <h2 className="text-2xl font-semibold mb-4">{t("features.title")}</h2>
-        <ul className="list-disc pl-6 mb-6">
+        <h2>{t("features.title")}</h2>
+        <ul>
           <li>{t("features.multiRegion")}</li>
           <li>{t("features.multiLanguage")}</li>
           <li>{t("features.userPreferences")}</li>
           <li>{t("features.responsive")}</li>
         </ul>
 
-        <h2 className="text-2xl font-semibold mb-4">{t("currentSettings")}</h2>
-        <div className="bg-gray-100 p-4 rounded-lg">
+        <h2>{t("currentSettings")}</h2>
+        <div className={styles.settingsSection}>
           <p>
             <strong>{t("region")}:</strong> {region}
           </p>

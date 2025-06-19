@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import Image from "next/image";
+import styles from "./index.module.scss";
 
 interface PageProps {
   params: Promise<{
@@ -44,57 +45,56 @@ export default async function TestStaticPage({ params }: PageProps) {
   const staticTimestamp = new Date().toISOString();
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className={styles.container}>
       <Link
         href="/products"
-        className="text-blue-600 hover:underline mb-4 inline-block"
+        className={styles.backLink}
       >
         ← {t("backToProducts")}
       </Link>
 
-      <h1 className="text-3xl font-bold mb-6">
+      <h1 className={styles.title}>
         {t("title", { id: productId })} - 静态测试版
       </h1>
       
       {/* ISR缓存指示器 */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-6">
-        <div className="flex items-center space-x-2">
-          <span className="text-blue-600 font-medium">🏗️ ISR缓存状态:</span>
-          <span className="text-blue-800">页面生成时间: {staticTimestamp}</span>
+      <div className={styles.cacheBanner}>
+        <div className={styles.cacheBannerHeader}>
+          <span className={styles.cacheBannerTitle}>🏗️ ISR缓存状态:</span>
+          <span className={styles.cacheBannerTimestamp}>页面生成时间: {staticTimestamp}</span>
         </div>
-        <p className="text-blue-600 text-sm mt-1">
+        <p className={styles.cacheBannerSubtitle}>
           这个时间每30秒更新一次（完全静态版本）
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bg-gray-100 aspect-square rounded-lg flex items-center justify-center">
+      <div className={styles.contentGrid}>
+        <div className={styles.imageContainer}>
           <Image
             src="https://static.mercdn.net/item/detail/orig/photos/m44137797237_1.jpg?1750099402"
             alt="Product Image"
             width={300}
             height={300}
-            className="h-full object-cover"
           />
         </div>
 
-        <div>
-          <h2 className="text-xl font-semibold mb-4">{t("details")}</h2>
-          <p className="text-gray-600 mb-4">
+        <div className={styles.detailsSection}>
+          <h2 className={styles.detailsTitle}>{t("details")}</h2>
+          <p className={styles.detailsDescription}>
             {t("description", { region, locale, id: productId })}
           </p>
           
           {/* 静态价格信息 */}
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-            <div className="text-lg font-medium text-gray-600">
+          <div className={styles.priceSection}>
+            <div className={styles.priceSectionLabel}>
               静态价格信息（用于测试ISR）
             </div>
-            <div className="text-sm text-gray-500 mt-1">
+            <div className={styles.priceSectionSubtitle}>
               这是静态生成的内容，会随ISR一起更新
             </div>
           </div>
 
-          <div className="space-y-2 mt-4">
+          <div className={styles.detailsList}>
             <p>
               <strong>{t("region")}:</strong> {region}
             </p>
