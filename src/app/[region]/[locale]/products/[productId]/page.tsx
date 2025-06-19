@@ -34,26 +34,7 @@ export const revalidate = 30;
 
 // 预生成静态路径
 export async function generateStaticParams() {
-  // 这里定义要预生成的路径参数
-  // 你可以从数据库或API获取所有可能的参数组合
-  const regions = ['cn', 'jp', 'us'];
-  const locales = ['zh', 'ja', 'en'];
-  const productIds = ['1', '5']; // 示例产品ID，实际应该从数据源获取
-
-  const params = [];
-  for (const region of regions) {
-    for (const locale of locales) {
-      for (const productId of productIds) {
-        params.push({
-          region,
-          locale,
-          productId,
-        });
-      }
-    }
-  }
-
-  return params;
+  return [];
 }
 
 export default async function ProductDetailPage({ params }: PageProps) {
@@ -67,7 +48,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
         href="/products"
         className={styles.backLink}
       >
-        ← {t("backToProducts")}
+         {t("backToProducts")}
       </Link>
 
       <h1 className={styles.title}>
@@ -129,10 +110,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
         </div>
 
         <div className={styles.detailsSection}>
-          <div className={styles.productBadges}>
-            <span className={styles.badge}>Verified</span>
-            <span className={styles.badge}>Premium</span>
-          </div>
           
           <h2 className={styles.detailsTitle}>{t("details")}</h2>
           
