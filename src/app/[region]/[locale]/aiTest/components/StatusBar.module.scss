@@ -1,0 +1,95 @@
+.statusBar {
+  position: relative;
+  width: 100%;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.time {
+  font-family: 'SF Pro', sans-serif;
+  font-weight: 590;
+  font-size: 17px;
+  line-height: 22px;
+  color: #000000;
+}
+
+.logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logoBackground {
+  background: #ffe62a;
+  border-radius: 6.7px;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoContent {
+  width: 40px;
+  height: 13px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+.indicators {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cellular,
+.wifi {
+  width: 19px;
+  height: 12px;
+  background: #000000;
+  border-radius: 2px;
+}
+
+.wifi {
+  width: 17px;
+}
+
+.battery {
+  position: relative;
+  width: 25px;
+  height: 12px;
+}
+
+.batteryBorder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 4.3px;
+}
+
+.batteryCapacity {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 21px;
+  height: 8px;
+  background: #000000;
+  border-radius: 2.5px;
+}
+
+.batteryCap {
+  position: absolute;
+  top: 4px;
+  right: -2px;
+  width: 1.3px;
+  height: 4px;
+  background: #000000;
+  border-radius: 0 1px 1px 0;
+} 

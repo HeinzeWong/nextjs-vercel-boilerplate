@@ -52,6 +52,12 @@ export default async function HomePage({ params }: PageProps) {
           >
             {t('aboutUs')}
           </Link>
+          <Link
+            href='/aiTest'
+            className={styles.secondaryButton}
+          >
+            AI Testing
+          </Link>
         </div>
       </main>
     </div>

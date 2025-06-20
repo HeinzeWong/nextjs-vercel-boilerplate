@@ -1,0 +1,192 @@
+.container {
+  min-height: 100vh;
+  background: #f9f9f8;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 402px;
+  margin: 0 auto;
+}
+
+.statusBar {
+  flex-shrink: 0;
+}
+
+.navBar {
+  flex-shrink: 0;
+}
+
+.content {
+  flex: 1;
+  padding: 6px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 84px; // Space for bottom button
+}
+
+.section {
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sectionContent {
+  padding: 16px;
+}
+
+.productRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 16px 0;
+}
+
+.arrowButton {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divider {
+  height: 0.5px;
+  background: rgba(11, 11, 0, 0.09);
+  width: 100%;
+}
+
+.expandRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+
+.expandText {
+  font-family: 'PingFang SC', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  color: #1f1f1d;
+}
+
+.expandButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  
+  span {
+    font-family: 'SF Pro', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #8c8c8a;
+    white-space: nowrap;
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 12px 0;
+  
+  &:first-child {
+    padding-top: 0;
+  }
+}
+
+.rowLabel {
+  font-family: 'SF Pro', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1f1f1d;
+  white-space: nowrap;
+}
+
+.inputContainer {
+  flex-shrink: 0;
+}
+
+.remarksValue {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  
+  span {
+    font-family: 'SF Pro', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #1f1f1d;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.imageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.sectionTitle {
+  font-family: 'SF Pro', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 25px;
+  color: #1f1f1d;
+  margin: 0;
+}
+
+.requirementsButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  
+  span {
+    font-family: 'SF Pro', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #8c8c8a;
+    white-space: nowrap;
+  }
+}
+
+// 移动端适配
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+  }
+  
+  .content {
+    padding: 6px 16px 12px;
+  }
+  
+  .row {
+    gap: 16px;
+  }
+} 

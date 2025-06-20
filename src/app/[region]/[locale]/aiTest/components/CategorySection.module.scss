@@ -1,0 +1,118 @@
+.categorySection {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 0 16px 16px;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0 12px;
+}
+
+.title {
+  font-family: 'SF Pro', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 25px;
+  color: #1f1f1d;
+  margin: 0;
+}
+
+.guideButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  
+  span {
+    font-family: 'SF Pro', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #8c8c8a;
+    white-space: nowrap;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-family: 'SF Pro', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #1f1f1d;
+  white-space: nowrap;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.option {
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 1000px;
+  border: none;
+  cursor: pointer;
+  font-family: 'SF Pro', sans-serif;
+  font-weight: 590;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  
+  &.selected {
+    background: #ffe62a;
+    color: #1f1f1d;
+  }
+  
+  &:not(.selected) {
+    background: rgba(16, 16, 0, 0.06);
+    color: #1f1f1d;
+    
+    &:hover {
+      background: rgba(16, 16, 0, 0.12);
+    }
+  }
+}
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 0;
+  
+  svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  
+  p {
+    font-family: 'SF Pro', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #8c8c8a;
+    margin: 0;
+  }
+} 

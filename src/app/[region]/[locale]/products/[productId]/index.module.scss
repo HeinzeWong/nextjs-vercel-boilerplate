@@ -6,6 +6,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -17,6 +18,7 @@
     opacity: 0;
     transform: translateX(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -28,6 +30,7 @@
     opacity: 0;
     transform: translateX(20px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -38,6 +41,7 @@
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
@@ -53,26 +57,26 @@
   padding: 16px;
   min-height: 100vh;
   background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
-  
+
   // 多断点响应式设计
   @media (min-width: 480px) {
     padding: 20px;
     gap: 20px;
   }
-  
+
   @media (min-width: 768px) {
     padding: 24px;
     gap: 24px;
   }
-  
+
   @media (min-width: 1024px) {
     padding: 24px 32px;
-    gap: 32px;
+    gap: 24px;
   }
-  
+
   @media (min-width: 1280px) {
     padding: 32px 40px;
-    gap: 36px;
+    gap: 24px;
   }
 }
 
@@ -92,7 +96,7 @@
   @include transition(all, 0.3s);
   @include shadow(1);
   animation: slideInLeft 0.6s ease-out;
-  
+
   &::before {
     content: "←";
     font-size: 14px;
@@ -104,16 +108,16 @@
     border-color: var(--color-blue-300);
     color: var(--color-blue-600);
     transform: translateY(-1px);
-    
+
     &::before {
       transform: translateX(-2px);
     }
   }
-  
+
   @media (min-width: 768px) {
     padding: 8px 16px;
     font-size: 14px;
-    
+
     &::before {
       font-size: 16px;
     }
@@ -131,17 +135,17 @@
   animation: fadeInUp 0.8s ease-out;
   letter-spacing: -0.02em;
   justify-self: start;
-  
+
   @media (min-width: 480px) {
     font-size: 28px;
   }
-  
+
   @media (min-width: 768px) {
     font-size: 32px;
   }
-  
+
   @media (min-width: 1024px) {
-    font-size: 36px;
+    font-size: 30px;
     line-height: 1.1;
     font-weight: 900;
   }
@@ -154,12 +158,12 @@
   background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
   border: 2px solid var(--color-blue-200);
   border-radius: var(--border-radius-lg);
-  padding: 16px;
+  padding: 10px;
   position: relative;
   overflow: hidden;
   @include shadow(2);
   animation: fadeInUp 0.8s ease-out 0.2s both;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -167,18 +171,18 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
     animation: shimmer 2s infinite;
   }
-  
+
   @media (min-width: 768px) {
     padding: 20px;
     gap: 16px;
     border-radius: var(--border-radius-xl);
   }
-  
+
   @media (min-width: 1024px) {
-    padding: 24px;
+    padding: 18px;
   }
 }
 
@@ -187,7 +191,7 @@
   align-items: center;
   justify-content: flex-start;
   gap: 8px;
-  
+
   @media (min-width: 768px) {
     gap: 12px;
   }
@@ -200,7 +204,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  
+
   @media (min-width: 768px) {
     font-size: 16px;
   }
@@ -210,7 +214,7 @@
   color: var(--color-blue-600);
   font-size: 13px;
   line-height: 1.5;
-  
+
   @media (min-width: 768px) {
     font-size: 14px;
   }
@@ -219,11 +223,11 @@
 .cacheBannerTimestamp {
   color: var(--color-blue-800);
   font-weight: 600;
-  background: rgba(255,255,255,0.6);
+  background: rgba(255, 255, 255, 0.6);
   padding: 4px 8px;
   border-radius: var(--border-radius-md);
   font-size: 11px;
-  
+
   @media (min-width: 768px) {
     padding: 4px 12px;
     font-size: 13px;
@@ -239,12 +243,12 @@
   @media (min-width: 768px) {
     gap: 24px;
   }
-  
+
   @media (min-width: 1024px) {
     grid-template-columns: 1.2fr 1fr;
     gap: 32px;
   }
-  
+
   @media (min-width: 1280px) {
     gap: 40px;
   }
@@ -262,7 +266,7 @@
   @include shadow(2);
   animation: slideInLeft 0.8s ease-out 0.4s both;
   @include transition(all, 0.4s);
-  
+
   &:hover {
     transform: translateY(-4px);
     @include shadow(3);
@@ -275,11 +279,11 @@
     object-fit: cover;
     @include transition(transform, 0.6s);
   }
-  
+
   &:hover img {
     transform: scale(1.03);
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -287,24 +291,24 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 100%);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
     opacity: 0;
     @include transition(opacity, 0.3s);
   }
-  
+
   &:hover::after {
     opacity: 1;
   }
-  
+
   @media (min-width: 768px) {
     border-radius: var(--border-radius-xl);
     @include shadow(3);
-    
+
     &:hover {
       transform: translateY(-6px);
       @include shadow(4);
     }
-    
+
     &:hover img {
       transform: scale(1.05);
     }
@@ -324,7 +328,7 @@
   font-weight: 700;
   @include shadow(2);
   animation: pulse 2s infinite;
-  
+
   @media (min-width: 768px) {
     top: 12px;
     left: 12px;
@@ -376,12 +380,12 @@
   cursor: pointer;
   @include shadow(2);
   @include transition(all, 0.2s);
-  
+
   &:hover {
     transform: scale(1.1);
     @include shadow(3);
   }
-  
+
   @media (min-width: 768px) {
     width: 48px;
     height: 48px;
@@ -393,7 +397,7 @@
   display: flex;
   gap: 8px;
   margin-top: 12px;
-  
+
   @media (min-width: 768px) {
     gap: 12px;
     margin-top: 16px;
@@ -408,23 +412,23 @@
   cursor: pointer;
   @include shadow(1);
   @include transition(all, 0.2s);
-  
+
   &:hover {
     @include shadow(2);
     transform: translateY(-1px);
   }
-  
+
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-  
+
   @media (min-width: 768px) {
     width: 80px;
     height: 80px;
     border-radius: var(--border-radius-lg);
-    
+
     &:hover {
       transform: translateY(-2px);
     }
@@ -449,7 +453,7 @@
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 12px;
-  
+
   @media (min-width: 768px) {
     margin-bottom: 16px;
   }
@@ -465,7 +469,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   @include shadow(1);
-  
+
   @media (min-width: 768px) {
     font-size: 11px;
     padding: 4px 12px;
@@ -478,7 +482,7 @@
   justify-content: flex-start;
   gap: 8px;
   margin-bottom: 16px;
-  
+
   @media (min-width: 768px) {
     gap: 12px;
     margin-bottom: 20px;
@@ -487,7 +491,7 @@
 
 .stars {
   font-size: 14px;
-  
+
   @media (min-width: 768px) {
     font-size: 18px;
   }
@@ -497,7 +501,7 @@
   color: var(--color-gray-600);
   font-weight: 500;
   font-size: 13px;
-  
+
   @media (min-width: 768px) {
     font-size: 14px;
   }
@@ -507,11 +511,11 @@
   display: flex;
   gap: 12px;
   margin: 20px 0;
-  
+
   @media (max-width: 479px) {
     flex-direction: column;
   }
-  
+
   @media (min-width: 768px) {
     gap: 16px;
     margin: 24px 0;
@@ -530,22 +534,22 @@
   cursor: pointer;
   @include shadow(2);
   @include transition(all, 0.3s);
-  
+
   &:hover {
     transform: translateY(-1px);
     @include shadow(3);
     background: linear-gradient(135deg, var(--color-blue-700) 0%, var(--color-blue-800) 100%);
   }
-  
+
   &:active {
     transform: translateY(0);
   }
-  
+
   @media (min-width: 768px) {
     padding: 16px 24px;
     border-radius: var(--border-radius-xl);
     font-size: 16px;
-    
+
     &:hover {
       transform: translateY(-2px);
     }
@@ -563,23 +567,23 @@
   font-weight: 700;
   cursor: pointer;
   @include transition(all, 0.3s);
-  
+
   &:hover {
     border-color: var(--color-blue-300);
     color: var(--color-blue-600);
     transform: translateY(-1px);
     @include shadow(2);
   }
-  
+
   &:active {
     transform: translateY(0);
   }
-  
+
   @media (min-width: 768px) {
     padding: 16px 24px;
     border-radius: var(--border-radius-xl);
     font-size: 16px;
-    
+
     &:hover {
       transform: translateY(-2px);
     }
@@ -592,13 +596,13 @@
   justify-content: space-between;
   font-size: 13px;
   gap: 8px;
-  
+
   strong {
     color: var(--color-gray-700);
     font-weight: 600;
     flex: 1;
   }
-  
+
   @media (min-width: 768px) {
     font-size: 14px;
   }
@@ -612,7 +616,7 @@
   border-radius: var(--border-radius-md);
   font-size: 11px;
   white-space: nowrap;
-  
+
   @media (min-width: 768px) {
     padding: 4px 12px;
     font-size: 13px;
@@ -626,7 +630,7 @@
   margin-bottom: 16px;
   color: var(--color-gray-900);
   position: relative;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -637,22 +641,22 @@
     background: linear-gradient(90deg, var(--color-blue-500), var(--color-purple-500));
     border-radius: 2px;
   }
-  
+
   @media (min-width: 768px) {
     font-size: 24px;
     margin-bottom: 20px;
-    
+
     &::after {
       bottom: -6px;
       width: 50px;
       height: 4px;
     }
   }
-  
+
   @media (min-width: 1024px) {
     font-size: 28px;
     margin-bottom: 24px;
-    
+
     &::after {
       width: 60px;
     }
@@ -665,7 +669,7 @@
   font-size: 14px;
   line-height: 1.6;
   font-weight: 400;
-  
+
   @media (min-width: 768px) {
     font-size: 16px;
     line-height: 1.7;
@@ -679,41 +683,41 @@
   padding: 16px;
   @include shadow(2);
   margin-top: 20px;
-  
-  & > * + * {
+
+  &>*+* {
     margin-top: 12px;
     padding-top: 12px;
     border-top: 1px solid var(--color-gray-100);
   }
-  
+
   p {
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 13px;
-    
+
     strong {
       color: var(--color-gray-700);
       font-weight: 600;
       flex: 1;
     }
-    
+
     &:last-child {
       color: var(--color-gray-600);
       font-weight: 500;
     }
   }
-  
+
   @media (min-width: 768px) {
     border-radius: var(--border-radius-xl);
     padding: 20px;
     margin-top: 24px;
-    
-    & > * + * {
+
+    &>*+* {
       margin-top: 16px;
       padding-top: 16px;
     }
-    
+
     p {
       font-size: 14px;
     }
@@ -722,13 +726,13 @@
 
 .loading {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  
-  & > * + * {
+
+  &>*+* {
     margin-top: 8px;
   }
-  
+
   @media (min-width: 768px) {
-    & > * + * {
+    &>*+* {
       margin-top: 12px;
     }
   }
@@ -739,7 +743,7 @@
   align-items: center;
   justify-content: flex-start;
   gap: 12px;
-  
+
   @media (min-width: 768px) {
     gap: 16px;
   }
@@ -752,7 +756,7 @@
   animation: shimmer 1.5s infinite;
   border-radius: var(--border-radius-lg);
   width: 160px;
-  
+
   @media (min-width: 768px) {
     height: 40px;
     width: 192px;
@@ -766,7 +770,7 @@
   animation: shimmer 1.5s infinite 0.2s;
   border-radius: var(--border-radius-md);
   width: 96px;
-  
+
   @media (min-width: 768px) {
     height: 32px;
     width: 128px;
@@ -780,7 +784,7 @@
   animation: shimmer 1.5s infinite 0.4s;
   border-radius: var(--border-radius-md);
   width: 192px;
-  
+
   @media (min-width: 768px) {
     height: 24px;
     width: 240px;
@@ -794,17 +798,17 @@
   padding: 16px;
   @include shadow(2);
   @include transition(all, 0.3s);
-  
+
   &:hover {
     border-color: var(--color-blue-200);
     @include shadow(3);
     transform: translateY(-1px);
   }
-  
+
   @media (min-width: 768px) {
     border-radius: var(--border-radius-xl);
     padding: 20px;
-    
+
     &:hover {
       transform: translateY(-2px);
     }
@@ -816,7 +820,7 @@
   font-weight: 700;
   color: var(--color-gray-800);
   margin-bottom: 8px;
-  
+
   @media (min-width: 768px) {
     font-size: 18px;
   }
@@ -826,8 +830,8 @@
   font-size: 13px;
   color: var(--color-gray-500);
   line-height: 1.5;
-  
+
   @media (min-width: 768px) {
     font-size: 14px;
   }
-} 
+}

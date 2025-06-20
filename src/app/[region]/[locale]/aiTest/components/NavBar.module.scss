@@ -1,0 +1,38 @@
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  padding: 8px 16px 8px 6px;
+  position: relative;
+}
+
+.backButton {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'SF Pro', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 25px;
+  color: #1f1f1d;
+  margin: 0;
+}
+
+.rightContent {
+  width: 32px;
+  height: 32px;
+} 
